@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>A Little World — For Hinata 💗</title>
+    
+    <!-- Google Fonts: Romantic & Classic Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =====================================================
+         AUDIO ASSETS
+    ===================================================== -->
+    <div id="audioContainer" style="display:none;">
+        <audio id="audio-mz3" src="song.mp3" loop preload="auto" playsinline></audio>
+        <audio id="audio-memory1" src="memory1.mp3" loop preload="auto" playsinline></audio>
+        <audio id="audio-memory2" src="memory2.mp3" loop preload="auto" playsinline></audio>
+        <audio id="audio-memory3" src="memory3.mp3" loop preload="auto" playsinline></audio>
+        <audio id="audio-memory4" src="memory4.mp3" loop preload="auto" playsinline></audio>
+        <audio id="audio-letter" src="letter.mp3" loop preload="auto" playsinline></audio>
+        <audio id="audio-magic" src="magic.mp3" loop preload="auto" playsinline></audio>
+        <audio id="audio-night" src="night.mp3" loop preload="auto" playsinline></audio>
+        <audio id="audio-surprise" src="surprise.mp3" loop preload="auto" playsinline></audio>
+    </div>
+
+    <!-- Floating Global Audio Widget -->
+    <button class="audio-toggle" id="audioToggle" aria-label="Toggle Music" title="Music Player">
+        <div class="audio-disc">
+            <div class="audio-disc-center"></div>
+        </div>
+        <div class="audio-bars">
+            <span></span><span></span><span></span>
+        </div>
+        <span class="audio-label" id="audioTrackName">♫ MZ3</span>
+    </button>
+
+    <!-- Global Persistent Background Particles Canvas -->
+    <canvas id="ambientCanvas"></canvas>
+
+
+    <!-- =====================================================
+         PAGE 1: OPENING / LANDING PAGE
+    ===================================================== -->
+    <section class="page active lobby-page" id="page1" data-page="1">
+        <div class="vintage-vignette"></div>
+
+        <!-- Atmospheric Glows & Floaties -->
+        <div class="romantic-bg">
+            <div class="heart-float">♡</div>
+            <div class="heart-float">❦</div>
+            <div class="heart-float">♡</div>
+            <div class="heart-float">♥</div>
+            <div class="heart-float">♡</div>
+            <div class="petal">🌸</div>
+            <div class="petal">✨</div>
+            <div class="petal">❦</div>
+            <div class="petal">✦</div>
+            <div class="petal">🧸</div>
+        </div>
+
+        <!-- Classical Architectural Corners -->
+        <div class="classic-frame-corner top-left"></div>
+        <div class="classic-frame-corner top-right"></div>
+        <div class="classic-frame-corner bottom-left"></div>
+        <div class="classic-frame-corner bottom-right"></div>
+
+        <div class="lobby-content">
+            <div class="eyebrow">
+                <span class="fleuron">❧</span>
+                <span>Attention, Dedication from my heart.</span>
+                <span class="fleuron">❧</span>
+            </div>
+
+            <h1 class="hero-title">
+                HEY<br>
+                <span class="classic-name">HINATA</span>
+                <span class="classic-heart">❤️</span>
+            </h1>
+
+            <p class="lobby-question">
+                You will step into a little world,<br>
+                <em>specially for you.</em>
+            </p>
+
+            <div class="choice-area" id="choiceArea">
+                <button class="yes-btn" id="yesBtn" aria-label="Enter little world">
+                    <span class="btn-shimmer"></span>
+                    <span class="btn-emoji">❤️</span> ENTER
+                </button>
+
+                <button class="no-btn" id="noBtn" aria-label="Decline">
+                    <span>❌ NO</span>
+                </button>
+            </div>
+
+            <div class="tiny-note">
+                <span class="script-accent">woven with endless love & devotion 🌸</span>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =====================================================
+         PAGE 2: MEMORIES — OUR LITTLE UNIVERSE (GALLERY)
+    ===================================================== -->
+    <section class="page memories-page" id="page2" data-page="2">
+        <div class="vintage-vignette"></div>
+
+        <!-- SINGLE MAGICAL FLYING LETTER WITH WINGS -->
+        <div class="magical-flying-letter-container">
+            <div class="flying-winged-letter" id="wingedLetterBtn" onclick="navigateToPage(3)" title="Read a Letter">
+                <!-- Left Wing -->
+                <div class="wing wing-left">
+                    <svg viewBox="0 0 80 120" class="wing-svg">
+                        <defs>
+                            <linearGradient id="wingGradL" x1="100%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95"/>
+                                <stop offset="40%" stop-color="#fce4ed" stop-opacity="0.85"/>
+                                <stop offset="80%" stop-color="#f7b2cb" stop-opacity="0.75"/>
+                                <stop offset="100%" stop-color="#e88cb4" stop-opacity="0.6"/>
+                            </linearGradient>
+                        </defs>
+                        <path d="M75 100 C 60 80, 20 60, 5 30 C 0 15, 10 5, 25 10 C 45 18, 60 45, 75 100 Z" fill="url(#wingGradL)" stroke="rgba(242, 212, 155, 0.7)" stroke-width="1.5"/>
+                        <path d="M75 90 C 55 70, 25 50, 15 35 C 25 35, 50 60, 75 90 Z" fill="#ffffff" opacity="0.6"/>
+                        <path d="M75 80 C 60 65, 35 48, 28 38 C 40 45, 60 65, 75 80 Z" fill="#fce4ed" opacity="0.5"/>
+                    </svg>
+                </div>
+
+                <!-- Central Vintage Wax-Sealed Envelope -->
+                <div class="letter-envelope-body">
+                    <div class="env-flap"></div>
+                    <div class="env-seal-wax">
+                        <span>H</span>
+                    </div>
+                    <div class="env-glow"></div>
+                    <div class="flying-letter-tag">
+                        <span>READ A LETTER</span>
+                    </div>
+                </div>
+
+                <!-- Right Wing -->
+                <div class="wing wing-right">
+                    <svg viewBox="0 0 80 120" class="wing-svg">
+                        <defs>
+                            <linearGradient id="wingGradR" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95"/>
+                                <stop offset="40%" stop-color="#fce4ed" stop-opacity="0.85"/>
+                                <stop offset="80%" stop-color="#f7b2cb" stop-opacity="0.75"/>
+                                <stop offset="100%" stop-color="#e88cb4" stop-opacity="0.6"/>
+                            </linearGradient>
+                        </defs>
+                        <path d="M5 100 C 20 80, 60 60, 75 30 C 80 15, 70 5, 55 10 C 35 18, 20 45, 5 100 Z" fill="url(#wingGradR)" stroke="rgba(242, 212, 155, 0.7)" stroke-width="1.5"/>
+                        <path d="M5 90 C 25 70, 55 50, 65 35 C 55 35, 30 60, 5 90 Z" fill="#ffffff" opacity="0.6"/>
+                        <path d="M5 80 C 20 65, 45 48, 52 38 C 40 45, 20 65, 5 80 Z" fill="#fce4ed" opacity="0.5"/>
+                    </svg>
+                </div>
+
+                <div class="flying-letter-sparkles">✨</div>
+            </div>
+        </div>
+
+        <button class="page-back" id="backBtn2" onclick="goBack()" aria-label="Go back">
+            <span class="back-arrow">←</span> Back
+        </button>
+
+        <div class="memory-heading">
+            <span class="sub-caption">
+                <span class="fleuron">✧</span> OUR LITTLE UNIVERSE <span class="fleuron">✧</span>
+            </span>
+            <h2>Memories</h2>
+            <div class="gold-divider"><span>❦</span></div>
+            <p>Four timeless moments. One cherished soul. Endless adoration.</p>
+        </div>
+
+        <div class="memory-stage" id="memoryStage">
+            <button class="memory-arrow left" id="memoryPrev" aria-label="Previous Memory">
+                ‹
+            </button>
+
+            <div class="memory-card" id="memoryCard">
+                <div class="card-inner-frame">
+                    <img id="memoryImage" src="1000163977.jpg" alt="Memory Photo" loading="eager">
+                    <div class="memory-shine"></div>
+                </div>
+
+                <div class="memory-number" id="memoryNumber">
+                    01 / 04
+                </div>
+
+                <div class="vintage-card-seal">❦</div>
+            </div>
+
+            <button class="memory-arrow right" id="memoryNext" aria-label="Next Memory">
+                ›
+            </button>
+        </div>
+
+        <div class="memory-bottom">
+            <div class="memory-title-small" id="memoryTitle">
+                That smile ❤️
+            </div>
+
+            <p class="memory-caption-preview" id="memoryCaptionPreview">
+                A timeless picture I could look at for an eternity.
+            </p>
+
+            <div class="memory-actions">
+                <button class="open-memory-btn" id="openMemoryBtn">
+                    <span class="btn-icon">❦</span> Open Memory <span class="btn-arrow">→</span>
+                </button>
+            </div>
+
+            <div class="memory-dots" id="memoryDots"></div>
+
+            <div class="swipe-hint">
+                <span class="fleuron">✦</span> SWIPE LEFT / RIGHT OR USE ARROWS <span class="fleuron">✦</span>
+            </div>
+
+            <div class="memories-nav-row">
+                <button class="letter-open-btn winged-letter-pill" onclick="navigateToPage(3)">
+                    <span class="btn-icon">💌</span> Read a Letter
+                </button>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =====================================================
+         PAGE 2B: INDIVIDUAL MEMORY PAGE (DEDICATED VIEW)
+         * Only Back button (NO Previous / Next buttons, NO Letter button)
+    ===================================================== -->
+    <section class="page individual-memory-page" id="pageMemoryDetail" data-page="memoryDetail">
+        <div class="vintage-vignette"></div>
+        <div class="memory-bg-glow" id="memoryBgGlow"></div>
+
+        <button class="page-back" onclick="goBack()" aria-label="Go back to Memories">
+            <span class="back-arrow">←</span> Back
+        </button>
+
+        <!-- Cute Floating Stickers & Sparkles -->
+        <div class="memory-stickers">
+            <span class="sticker s1">🌸</span>
+            <span class="sticker s2">✨</span>
+            <span class="sticker s3">🧸</span>
+            <span class="sticker s4">💗</span>
+            <span class="sticker s5">💕</span>
+        </div>
+
+        <div class="single-memory-container">
+            <div class="single-memory-photo-box">
+                <div class="ornate-photo-frame">
+                    <div class="photo-mat">
+                        <img id="singleMemoryImg" src="1000163977.jpg" alt="Hinata Memory">
+                    </div>
+                    <div class="frame-tag-ribbon" id="singleMemoryTag">MEMORY 01</div>
+                </div>
+            </div>
+
+            <div class="single-memory-info-box">
+                <div class="memory-badge">
+                    <span class="fleuron">❦</span> <span id="singleMemoryNumberText">CHERISHED MOMENT I</span>
+                </div>
+
+                <h1 id="singleMemoryTitle">That smile ❤️</h1>
+
+                <div class="detail-line"></div>
+
+                <p id="singleMemoryCaption">
+                    A timeless picture I could look at for an eternity. The world fades when you smile.
+                </p>
+
+                <div class="memory-music-indicator">
+                    <span class="music-note-icon">🎵</span>
+                    <span id="singleMemorySongName">Playing: Memory Song 1</span>
+                </div>
+
+                <div class="detail-sign">
+                    — always & eternally yours, Hinata 🌸
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =====================================================
+         PAGE 3: "READ A LETTER FOR YOU"
+    ===================================================== -->
+    <section class="page letter-page" id="page3" data-page="3">
+        <div class="letter-background"></div>
+        <div class="vintage-vignette"></div>
+
+        <button class="page-back" onclick="goBack()" aria-label="Go back">
+            <span class="back-arrow">←</span> Back
+        </button>
+
+        <!-- Cute Floating Stickers for Letter -->
+        <div class="letter-decorations">
+            <div class="letter-sticker ls-1">🧸</div>
+            <div class="letter-sticker ls-2">🌸</div>
+            <div class="letter-sticker ls-3">💕</div>
+            <div class="letter-sticker ls-4">✨</div>
+            <div class="letter-sticker ls-5">🫶🏻</div>
+            <div class="letter-sticker ls-6">🌸</div>
+            <div class="letter-sticker ls-7">🧸</div>
+        </div>
+
+        <div class="letter-scene">
+            <!-- 3D Wax-Sealed Vintage Envelope -->
+            <div class="envelope" id="letterEnvelope">
+                <div class="envelope-flap"></div>
+                <div class="envelope-seal">
+                    <span class="seal-h">H</span>
+                </div>
+                <div class="envelope-paper">❦</div>
+            </div>
+
+            <!-- Heirloom Parchment Sheet -->
+            <div class="letter-paper" id="letterPaper">
+                <div class="parchment-border"></div>
+
+                <div class="letter-content" id="letterContent">
+                    <div class="letter-label">
+                        <span class="fleuron">❧</span> A PRIVATE CONFESSION FOR HINATA <span class="fleuron">❧</span>
+                    </div>
+
+                    <h1 class="letter-title">
+                        My Dearest Hinata,
+                    </h1>
+
+                    <div id="typedLetter"></div>
+
+                    <div class="letter-sign">
+                        <span class="script-cursive">Yours, always & entirely.</span><br>
+                        <span class="seal-icon">♥ 🌸 🧸</span>
+                    </div>
+
+                    <button class="magic-letter-btn" id="letterMagicBtn" onclick="navigateToPage(4)">
+                        <span class="btn-icon">✨</span> Something Magical →
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =====================================================
+         PAGE 4: SOMETHING MAGICAL
+         * Finger/Mouse move: Temporary interactive photo discovery
+         * Actual scratch/drawing gesture: Unlocks Secret Magic Page
+    ===================================================== -->
+    <section class="page magic-page" id="page4" data-page="4">
+        <div class="magic-background"></div>
+        <div class="vintage-vignette"></div>
+
+        <button class="page-back" onclick="goBack()" aria-label="Go back">
+            <span class="back-arrow">←</span> Back
+        </button>
+
+        <div class="magic-heading">
+            <span>
+                <span class="fleuron">✦</span> THE CELESTIAL CANVAS <span class="fleuron">✦</span>
+            </span>
+
+            <h1>
+                Something Magical<br>
+                <em>Glide to Discover · Scratch to Reveal</em>
+            </h1>
+
+            <p>
+                Move your finger or mouse to awaken hidden memories in golden light.<br>
+                Draw or scratch across the stardust to unlock the secret confession.
+            </p>
+
+            <div class="magic-hint-pill" id="magicGestureHint">
+                <span>✨ Move to discover photos · Scratch continuously to open secret</span>
+            </div>
+        </div>
+
+        <!-- Layer for temporary floating photo discovery (max 3) -->
+        <div id="magicPhotoLayer"></div>
+
+        <!-- Gesture canvas for stardust trail & scratch detection -->
+        <canvas id="magicGestureLayer"></canvas>
+
+        <div class="magic-success" id="magicSuccess">
+            <div class="spark-icon">✨</div>
+            <h2>A secret path awakens...</h2>
+            <div class="magic-fleuron">❦</div>
+        </div>
+    </section>
+
+
+    <!-- =====================================================
+         PAGE 5: MAGIC / SECRET SCRATCH PAGE (ULTRA-REALISTIC CLASSIC)
+    ===================================================== -->
+    <section class="page scratch-page" id="page5" data-page="5">
+        <div class="scratch-bg">
+            <div class="scratch-glow"></div>
+            <div class="candle-light"></div>
+            <div class="scratch-particle">✦</div>
+            <div class="scratch-particle">♡</div>
+            <div class="scratch-particle">✧</div>
+            <div class="scratch-particle">❦</div>
+            <div class="scratch-particle">🌸</div>
+            <div class="scratch-particle">🧸</div>
+            <div class="scratch-particle">✨</div>
+        </div>
+
+        <div class="vintage-vignette"></div>
+
+        <button class="page-back" onclick="goBack()" aria-label="Go back">
+            <span class="back-arrow">←</span> Back
+        </button>
+
+        <!-- Scrollable Wrapper for Full Poetry Accessibility -->
+        <div class="scratch-scroll-container">
+            <div class="scratch-heading">
+                <span>
+                    <span class="fleuron">❧</span> A SACRED CONFESSION <span class="fleuron">❧</span>
+                </span>
+                <h1>Scratch to Reveal Secret</h1>
+                <p>
+                    Gently stroke the gilded foil with your finger or mouse to unveil the hidden verses.
+                </p>
+            </div>
+
+            <div class="scratch-card-wrap">
+                <div class="scratch-card" id="scratchCardElement">
+                    <!-- Underneath Parchment containing FULL Scrollable Poetry -->
+                    <div class="scratch-paper-content" id="scratchPaperScrollable">
+                        <div class="scratch-parchment-border"></div>
+                        <div class="scratch-decor top-right">🌸 ❧</div>
+                        <div class="scratch-small">DEDICATED TO HINATA 💗</div>
+
+                        <div id="scratchText" class="scratch-full-text">
+                            <!-- Full 16 lines of Shayari -->
+                        </div>
+
+                        <div class="scratch-heart">❦</div>
+                    </div>
+
+                    <!-- Gilded Foil Layer -->
+                    <canvas id="scratchCanvas"></canvas>
+                </div>
+
+                <div class="scratch-progress-bar">
+                    <div class="scratch-progress-fill" id="scratchProgressFill"></div>
+                </div>
+
+                <div class="scratch-hint" id="scratchHintText">
+                    <span>✦</span> Stroke the golden leaf to reveal the secret <span>✦</span>
+                </div>
+
+                <button class="continue-night-btn" id="continueNightBtn" onclick="navigateToPage(6)">
+                    <span class="btn-icon">🌙</span> Send to the Night Sky →
+                </button>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =====================================================
+         PAGE 6: FOREVER AND EVER (ULTRA-REALISTIC NIGHT SKY)
+    ===================================================== -->
+    <section class="page night-page" id="page6" data-page="6">
+        <div class="night-sky">
+            <div class="night-stars" id="nightStars"></div>
+            <div class="cosmic-nebula"></div>
+            <div class="moon-glow"></div>
+
+            <!-- ULTRA-REALISTIC LUNAR & METALLIC CHAIN SYSTEM -->
+            <div class="realistic-moon-container">
+                <div class="crescent-moon" id="realisticMoon">
+                    <div class="moon-texture-surface"></div>
+                    <div class="moon-cut"></div>
+                    <div class="moon-crater c1"></div>
+                    <div class="moon-crater c2"></div>
+                    <div class="moon-crater c3"></div>
+                    <div class="moon-crater c4"></div>
+                    <div class="moon-shimmer"></div>
+                    <div class="moon-halo"></div>
+                </div>
+
+                <!-- REALISTIC METALLIC STEEL & GOLD CHAIN -->
+                <div class="moon-chain" id="moonChain">
+                    <span class="link l1"></span>
+                    <span class="link l2"></span>
+                    <span class="link l3"></span>
+                    <span class="link l4"></span>
+                    <span class="link l5"></span>
+                    <span class="link l6"></span>
+                    <span class="link l7"></span>
+                    <span class="link l8"></span>
+                </div>
+
+                <!-- BAROQUE SUSPENDED LOCKET (NATURAL GENTLE SWING) -->
+                <div class="hanging-photo" id="hangingLocket">
+                    <div class="photo-hook"></div>
+                    <div class="photo-frame">
+                        <div class="photo-frame-border">
+                            <img src="1000163982.jpg" alt="Hinata in the Moon Sky">
+                        </div>
+                        <div class="frame-tag">Forever & Ever 🌙</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="night-vignette"></div>
+        </div>
+
+        <button class="page-back night-back" onclick="goBack()" aria-label="Go back">
+            <span class="back-arrow">←</span> Back
+        </button>
+
+        <!-- Smoothly Scrollable Shayari Plaque (Zero Cut-Off) -->
+        <div class="night-content-wrapper">
+            <div class="shayari-box">
+                <div class="shayari-label">
+                    <span class="fleuron">✦</span> FOREVER AND EVER · SOMEWHERE BETWEEN THE STARS & YOU <span class="fleuron">✦</span>
+                </div>
+
+                <div class="shayari-decor-quote">“</div>
+
+                <div class="shayari" id="nightShayariContent">
+                    Teri yaadon ki khushboo se,<br>
+                    meri shaam mehek jaati hai,<br>
+                    Tera khayaal aate hi,<br>
+                    meri dhadkan behak jaati hai.
+
+                    <br><br>
+
+                    Teri baaton ki woh mithaas,<br>
+                    ab bhi dil mein basi hai,<br>
+                    Teri tasveer meri aankhon mein,<br>
+                    aaj bhi waise hi saji hai.
+
+                    <br><br>
+
+                    Tere bin ye raat bhi,<br>
+                    kuchh adhuri si guzar jaati hai,<br>
+                    Teri yaad jab bhi aaye,<br>
+                    aankh khud-ba-khud bhar jaati hai.
+
+                    <br><br>
+
+                    Na jaane kyun har lamha,<br>
+                    tera hi intezaar karta hai,<br>
+                    Ye dil tujhe yaad nahi karta…<br>
+                    har pal tujhse pyaar karta hai.
+                </div>
+
+                <div class="night-cta-container">
+                    <button class="surprise-btn" id="nightSurpriseBtn" onclick="navigateToPage(7)">
+                        <span class="btn-icon">💗</span> Your Final Surprise →
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =====================================================
+         PAGE 7: FINAL SURPRISE & ETERNAL KEEPSAKE (PRESERVED)
+    ===================================================== -->
+    <section class="page final-page" id="page7" data-page="7">
+        <div class="final-background">
+            <div class="final-stars"></div>
+            <div class="final-orb orb-one"></div>
+            <div class="final-orb orb-two"></div>
+            <div class="final-orb orb-three"></div>
+        </div>
+
+        <div class="vintage-vignette"></div>
+
+        <button class="page-back" onclick="goBack()" aria-label="Go back">
+            <span class="back-arrow">←</span> Back
+        </button>
+
+        <div class="final-stage">
+            <!-- STAGE 1: 6-7 SECONDS ANTICIPATION PHOTO SEQUENCE -->
+            <div class="anticipation-sequence" id="anticipationSequence">
+                <div class="anticipation-floating-layer" id="anticipationFloatingLayer">
+                    <!-- 4 Hinata photos float, appear, fade, and drift across positions -->
+                </div>
+                
+                <div class="anticipation-caption">
+                    <span class="anticipation-sparkle">✨</span>
+                    <p class="anticipation-text">Remembering every beautiful moment with you...</p>
+                    <div class="anticipation-progress-bar">
+                        <div class="anticipation-progress-inner" id="anticipationProgress"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STAGE 2: GLOWING SURPRISE BOX -->
+            <div class="final-intro" id="finalIntro">
+                <div class="final-gift-box" id="finalGiftBox">
+                    <div class="gift-pulse-aura"></div>
+                    <div class="gift-sparkles-top">✨ 🌸 ✨</div>
+                    <div class="gift-box-icon">🎁</div>
+                    <h2 class="gift-title">A Surprise For You 💗</h2>
+                    <p class="gift-tap-hint">Tap the gift box to open</p>
+                </div>
+            </div>
+
+            <!-- STAGE 3: FINAL REVEAL (MASTERPIECE KEEPSAKE) -->
+            <div class="final-reveal-container" id="finalRevealContainer">
+                <div class="final-scroll-wrapper">
+                    <div class="final-card" id="finalCard">
+                        <div class="final-card-border"></div>
+
+                        <div class="final-symbols">
+                            💕　✨　🌸　🧸　💗　🌙　🫶🏻　♾️
+                        </div>
+
+                        <div class="final-photo-frame">
+                            <img src="1000163981.jpg" alt="Hinata — Eternal Love" id="finalHeroPhoto">
+                            <div class="photo-glow-ring"></div>
+                        </div>
+
+                        <div class="final-label">
+                            DEDICATED TO HINATA · OUR LITTLE WORLD
+                        </div>
+
+                        <h1>
+                            Forever Yours,<br>
+                            <span class="final-hinata">Hinata</span> <span class="heart-pulse">❤️</span>
+                        </h1>
+
+                        <div class="final-divider">
+                            <span>❦</span>
+                        </div>
+
+                        <div class="final-message-box">
+                            <p class="final-message-quote">
+                                “No matter how many pages this little world has,<br>
+                                somehow every path still leads back to you.<br>
+                                You are not just a memory I keep—<br>
+                                you are a beautiful part of the story my heart chose to write.<br>
+                                And if this little universe could speak,<br>
+                                it would simply say…<br>
+                                <strong>Forever, in the softest corner of my heart, there will always be a little place called Hinata. ❤️</strong>”
+                            </p>
+                        </div>
+
+                        <div class="final-emojis-row">
+                            <span>💕</span>
+                            <span>✨</span>
+                            <span>🌸</span>
+                            <span>🧸</span>
+                            <span>💗</span>
+                            <span>🌙</span>
+                            <span>🫶🏻</span>
+                            <span>♾️</span>
+                        </div>
+
+                        <div class="final-bottom">
+                            With all my devotion & love · Eternally & Unconditionally
+                        </div>
+
+                        <div class="final-seal">
+                            <div class="seal-circle">
+                                <span>H</span>
+                            </div>
+                        </div>
+
+                        <div class="final-replay-row">
+                            <button class="replay-btn" onclick="navigateToPage(1)">
+                                <span>↺ Return to Beginning</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Script Logic -->
+    <script src="script.js"></script>
+</body>
+</html>
